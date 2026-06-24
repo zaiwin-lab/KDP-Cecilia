@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard — KDP Cecilia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dash-body">
+
+  <!-- Auth gate -->
+  <div id="auth-gate" class="auth-gate hidden">
+    <div class="auth-card">
+      <div class="auth-logo">🔐</div>
+      <h2>Dashboard Cecilia</h2>
+      <p>Masukkan kata laluan untuk akses.</p>
+      <input type="password" id="auth-pw" class="input-field" placeholder="Kata laluan" onkeydown="if(event.key==='Enter')checkAuth()"/>
+      <button class="btn-primary" onclick="checkAuth()">Masuk →</button>
+      <p class="auth-err hidden" id="auth-err">Kata laluan salah. Cuba lagi.</p>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dash-main" class="dash-main hidden">
+    <header class="dash-header">
+      <div class="dash-header-inner">
+        <div class="dash-brand"><div class="brand-dot"></div><span>KDP Cecilia &mdash; Dashboard</span></div>
+        <div class="dash-controls">
+          <input type="text" id="search" class="search-input" placeholder="Cari nama, daerah, telefon…" oninput="renderTable()"/>
+          <select id="filter-status" class="select-input" onchange="renderTable()">
+            <option value="">Semua Status</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Paid">Paid</option>
+          </select>
+          <button class="btn-ghost btn-sm" onclick="refreshData()">↻ Refresh</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats-bar">
+      <div class="stat-card"><div class="stat-num" id="stat-total">0</div><div class="stat-label">Jumlah Lead</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-new">0</div><div class="stat-label">New</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-contacted">0</div><div class="stat-label">Contacted</div></div>
+      <div class="stat-card accent"><div class="stat-num" id="stat-paid">0</div><div class="stat-label">Paid ✓</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="leads-table" id="leads-table">
+        <thead>
+          <tr>
+            <th>Perniagaan</th>
+            <th>Daerah</th>
+            <th>Telefon</th>
+            <th>Skor</th>
+            <th>Status</th>
+            <th>Tarikh</th>
+            <th>Tindakan</th>
+          </tr>
+        </thead>
+        <tbody id="leads-body">
+          <tr><td colspan="7" class="empty-row">Memuatkan data…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="sync.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

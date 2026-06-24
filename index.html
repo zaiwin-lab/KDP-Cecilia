@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audit Digital Percuma — KDP Cecilia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="portal-wrap">
+
+  <!-- STEP 0: Landing -->
+  <section class="step active" id="step-0">
+    <div class="hero">
+      <div class="hero-brand">
+        <div class="brand-dot"></div>
+        <span>KDP Sarawak &middot; Cecilia</span>
+      </div>
+      <div class="hero-badge">🎯 Audit Digital Percuma</div>
+      <h1 class="hero-title">Adakah perniagaan anda <em>kelihatan</em> dalam talian?</h1>
+      <p class="hero-sub">Jawab 7 soalan ringkas. Kami akan tunjukkan peluang digital anda &mdash; dan cara website boleh bantu anda dapat lebih ramai pelanggan.</p>
+      <div class="hero-meta">
+        <span>✴ Tiada bayaran</span>
+        <span>✴ 3 minit sahaja</span>
+        <span>✴ Untuk peniaga Sarawak</span>
+      </div>
+      <button class="btn-primary" onclick="goStep(1)">Mula Sekarang <span class="btn-arrow">→</span></button>
+      <p class="hero-footnote">Program Sarawak Digital Champion (KSDC)</p>
+    </div>
+  </section>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-shell" id="progress-shell">
+    <div class="progress-bar-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+    <span class="progress-label" id="progress-label">1 / 7</span>
+  </div>
+
+  <!-- STEP 1: District -->
+  <section class="step" id="step-1">
+    <div class="q-wrap">
+      <div class="q-num">01</div>
+      <h2 class="q-title">Di mana lokasi perniagaan anda?</h2>
+      <p class="q-hint">Pilih daerah / kawasan anda.</p>
+      <div class="option-grid" id="q1">
+        <div class="option" onclick="selectOption(this,'q1','Kuching')">Kuching</div>
+        <div class="option" onclick="selectOption(this,'q1','Miri')">Miri</div>
+        <div class="option" onclick="selectOption(this,'q1','Sibu')">Sibu</div>
+        <div class="option" onclick="selectOption(this,'q1','Bintulu')">Bintulu</div>
+        <div class="option" onclick="selectOption(this,'q1','Kota Samarahan')">Kota Samarahan</div>
+        <div class="option" onclick="selectOption(this,'q1','Sri Aman')">Sri Aman</div>
+        <div class="option" onclick="selectOption(this,'q1','Sarikei')">Sarikei</div>
+        <div class="option" onclick="selectOption(this,'q1','Mukah')">Mukah</div>
+        <div class="option" onclick="selectOption(this,'q1','Limbang')">Limbang</div>
+        <div class="option" onclick="selectOption(this,'q1','Betong')">Betong</div>
+        <div class="option" onclick="selectOption(this,'q1','Serian')">Serian</div>
+        <div class="option" onclick="selectOption(this,'q1','Kapit')">Kapit</div>
+        <div class="option full" onclick="selectOption(this,'q1','Lain-lain')">Lain-lain</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(0)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(1,'q1')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: Business type -->
+  <section class="step" id="step-2">
+    <div class="q-wrap">
+      <div class="q-num">02</div>
+      <h2 class="q-title">Apakah jenis perniagaan anda?</h2>
+      <p class="q-hint">Pilih yang paling hampir dengan perniagaan anda.</p>
+      <div class="option-grid" id="q2">
+        <div class="option" onclick="selectOption(this,'q2','Makanan & Minuman')">🍜 Makanan &amp; Minuman</div>
+        <div class="option" onclick="selectOption(this,'q2','Fesyen & Pakaian')">👗 Fesyen &amp; Pakaian</div>
+        <div class="option" onclick="selectOption(this,'q2','Perkhidmatan')">🔧 Perkhidmatan</div>
+        <div class="option" onclick="selectOption(this,'q2','Pertanian & Produk')">🌾 Pertanian &amp; Produk</div>
+        <div class="option" onclick="selectOption(this,'q2','Kraftangan & Seni')">🎨 Kraftangan &amp; Seni</div>
+        <div class="option" onclick="selectOption(this,'q2','Runcit & Borong')">🏪 Runcit &amp; Borong</div>
+        <div class="option" onclick="selectOption(this,'q2','Kesihatan & Kecantikan')">💄 Kesihatan &amp; Kecantikan</div>
+        <div class="option" onclick="selectOption(this,'q2','Lain-lain')">📦 Lain-lain</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(1)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(2,'q2')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: Web presence -->
+  <section class="step" id="step-3">
+    <div class="q-wrap">
+      <div class="q-num">03</div>
+      <h2 class="q-title">Adakah anda sudah ada kehadiran dalam talian?</h2>
+      <p class="q-hint">Pilih satu yang paling tepat.</p>
+      <div class="option-grid cols-1" id="q3">
+        <div class="option" onclick="selectOption(this,'q3','Tiada langsung')">❌ Tiada langsung &mdash; saya tiada apa-apa dalam talian</div>
+        <div class="option" onclick="selectOption(this,'q3','Facebook sahaja')">📘 Ada Facebook page sahaja</div>
+        <div class="option" onclick="selectOption(this,'q3','Instagram sahaja')">📸 Ada Instagram sahaja</div>
+        <div class="option" onclick="selectOption(this,'q3','Facebook & Instagram')">📱 Ada Facebook &amp; Instagram</div>
+        <div class="option" onclick="selectOption(this,'q3','Sudah ada website')">✅ Sudah ada website sendiri</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(2)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(3,'q3')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4: Revenue -->
+  <section class="step" id="step-4">
+    <div class="q-wrap">
+      <div class="q-num">04</div>
+      <h2 class="q-title">Berapa jualan bulanan perniagaan anda?</h2>
+      <p class="q-hint">Anggaran sahaja &mdash; ini membantu kami bagi cadangan yang tepat.</p>
+      <div class="option-grid" id="q4">
+        <div class="option" onclick="selectOption(this,'q4','Bawah RM1,000')">Bawah RM1,000</div>
+        <div class="option" onclick="selectOption(this,'q4','RM1,000–RM5,000')">RM1,000 &ndash; RM5,000</div>
+        <div class="option" onclick="selectOption(this,'q4','RM5,000–RM15,000')">RM5,000 &ndash; RM15,000</div>
+        <div class="option" onclick="selectOption(this,'q4','RM15,000–RM50,000')">RM15,000 &ndash; RM50,000</div>
+        <div class="option full" onclick="selectOption(this,'q4','Lebih RM50,000')">Lebih RM50,000</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(3)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(4,'q4')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5: Discovery -->
+  <section class="step" id="step-5">
+    <div class="q-wrap">
+      <div class="q-num">05</div>
+      <h2 class="q-title">Bagaimana pelanggan biasanya jumpa perniagaan anda?</h2>
+      <p class="q-hint">Pilih cara utama pelanggan menemui anda.</p>
+      <div class="option-grid cols-1" id="q5">
+        <div class="option" onclick="selectOption(this,'q5','Melalui kenalan / rujukan')">👥 Melalui kenalan / rujukan</div>
+        <div class="option" onclick="selectOption(this,'q5','Facebook atau Instagram')">📱 Facebook atau Instagram</div>
+        <div class="option" onclick="selectOption(this,'q5','Datang terus ke kedai')">🏪 Datang terus ke kedai / pejabat</div>
+        <div class="option" onclick="selectOption(this,'q5','Shopee / Lazada / marketplace')">🛒 Shopee / Lazada / marketplace</div>
+        <div class="option" onclick="selectOption(this,'q5','Carian Google')">🔍 Carian Google</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(4)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(5,'q5')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 6: Challenge -->
+  <section class="step" id="step-6">
+    <div class="q-wrap">
+      <div class="q-num">06</div>
+      <h2 class="q-title">Apakah cabaran terbesar anda sekarang?</h2>
+      <p class="q-hint">Pilih satu yang paling berkaitan.</p>
+      <div class="option-grid cols-1" id="q6">
+        <div class="option" onclick="selectOption(this,'q6','Susah dapat pelanggan baru')">😔 Susah nak dapat pelanggan baru</div>
+        <div class="option" onclick="selectOption(this,'q6','Pelanggan tak jumpa saya online')">🔍 Pelanggan tak boleh jumpa saya dalam Google atau online</div>
+        <div class="option" onclick="selectOption(this,'q6','Persaingan sengit')">⚔️ Saingan dari perniagaan lain terlalu kuat</div>
+        <div class="option" onclick="selectOption(this,'q6','Tiada masa urus media sosial')">⏰ Tiada masa untuk urus Facebook / Instagram</div>
+        <div class="option" onclick="selectOption(this,'q6','Pelanggan kurang percaya')">🤝 Pelanggan kurang percaya atau tak serius</div>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(5)">← Kembali</button>
+        <button class="btn-primary" onclick="nextStep(6,'q6')">Seterusnya →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 7: Contact -->
+  <section class="step" id="step-7">
+    <div class="q-wrap">
+      <div class="q-num">07</div>
+      <h2 class="q-title">Siapa anda? Bagi kami hubungi anda.</h2>
+      <p class="q-hint">Kami akan hantar cadangan digital percuma dalam masa 24 jam.</p>
+      <div class="field-stack">
+        <input class="input-field" type="text" id="f-biz" placeholder="Nama perniagaan anda" autocomplete="organization"/>
+        <input class="input-field" type="text" id="f-name" placeholder="Nama anda (pemilik)" autocomplete="name"/>
+        <input class="input-field" type="tel" id="f-mobile" placeholder="No. telefon (contoh: 011-2345 6789)" autocomplete="tel"/>
+        <input class="input-field" type="email" id="f-email" placeholder="Emel (jika ada)" autocomplete="email"/>
+      </div>
+      <div class="q-nav">
+        <button class="btn-ghost" onclick="goStep(6)">← Kembali</button>
+        <button class="btn-primary" id="submit-btn" onclick="submitForm()">Hantar →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="step" id="step-loading">
+    <div class="loading-wrap">
+      <div class="loader-ring"></div>
+      <p class="loading-title">Sedang menganalisis…</p>
+      <div class="loading-steps">
+        <div class="load-item active" id="li-1">Menilai peluang digital anda</div>
+        <div class="load-item" id="li-2">Memeriksa landskap persaingan</div>
+        <div class="load-item" id="li-3">Menyediakan cadangan untuk anda</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THANK YOU -->
+  <section class="step" id="step-thanks">
+    <div class="thanks-wrap">
+      <div class="thanks-icon">🎉</div>
+      <h2 class="thanks-title">Terima kasih!</h2>
+      <p class="thanks-sub">Maklumat anda telah kami terima. Pasukan kami akan menghubungi anda dalam masa <strong>24 jam</strong> untuk berkongsi cadangan digital percuma.</p>
+      <div class="thanks-card">
+        <p class="thanks-card-label">Sementara itu…</p>
+        <ul class="thanks-list">
+          <li>📱 Follow kami di Facebook untuk tips digital percuma</li>
+          <li>📞 Hubungi terus jika ada sebarang soalan</li>
+          <li>🌐 Lihat contoh website klien kami</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="sync.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
