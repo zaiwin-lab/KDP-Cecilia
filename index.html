@@ -3,222 +3,318 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Audit Digital Percuma — KDP Cecilia</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Audit Kehadiran Digital perniagaan anda dan layak untuk Baucar Digital RM1,000 di bawah program Sarawak Digital Champion (KDP)."/>
+  <title>Audit Kehadiran Digital SME — Program KDP Sarawak</title>
   <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28'>🏛️</text></svg>"/>
 </head>
 <body>
-<div class="portal-wrap">
 
-  <!-- STEP 0: Landing -->
-  <section class="step active" id="step-0">
-    <div class="hero">
-      <div class="hero-brand">
-        <div class="brand-dot"></div>
-        <span>KDP Sarawak &middot; Cecilia</span>
-      </div>
-      <div class="hero-badge">🎯 Audit Digital Percuma</div>
-      <h1 class="hero-title">Adakah perniagaan anda <em>kelihatan</em> dalam talian?</h1>
-      <p class="hero-sub">Jawab 7 soalan ringkas. Kami akan tunjukkan peluang digital anda &mdash; dan cara website boleh bantu anda dapat lebih ramai pelanggan.</p>
-      <div class="hero-meta">
-        <span>✴ Tiada bayaran</span>
-        <span>✴ 3 minit sahaja</span>
-        <span>✴ Untuk peniaga Sarawak</span>
-      </div>
-      <button class="btn-primary" onclick="goStep(1)">Mula Sekarang <span class="btn-arrow">→</span></button>
-      <p class="hero-footnote">Program Sarawak Digital Champion (KSDC)</p>
+<!-- ── Beta bar ─────────────────────────────────────── -->
+<div class="beta-bar" role="banner">
+  <div class="beta-bar__left">
+    <span class="beta-chip">Beta</span>
+    <span class="beta-bar__text">Versi ujian — Untuk semakan kelulusan program KDP Sarawak</span>
+  </div>
+  <button class="beta-demo-btn" id="demo-btn" aria-label="Cuba mod demo">Cuba Demo →</button>
+</div>
+
+<!-- ── Progress bar ─────────────────────────────────── -->
+<div class="progress-wrap" id="progress-wrap" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Kemajuan audit">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <span class="progress-label" id="progress-label">1 / 7</span>
+</div>
+
+<!-- ── Hero ─────────────────────────────────────────── -->
+<section id="step-0" aria-label="Halaman utama">
+  <div class="hero-inner">
+    <div class="hero-seal" aria-hidden="true">🏛️</div>
+
+    <div class="hero-labels">
+      <p class="hero-programme">Kerajaan Negeri Sarawak · Program KDP</p>
+      <p class="hero-subprogramme">Skim Pemerkasaan Digital Usahawan Kecil &amp; Sederhana</p>
     </div>
-  </section>
 
-  <!-- PROGRESS BAR -->
-  <div class="progress-shell" id="progress-shell">
-    <div class="progress-bar-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
-    <span class="progress-label" id="progress-label">1 / 7</span>
+    <h1 class="hero-title">
+      Audit Kehadiran Digital<br/>
+      <em>Percuma untuk Perniagaan Sarawak</em>
+    </h1>
+
+    <p class="hero-tagline">
+      Jawab 7 soalan ringkas. Ketahui tahap digital perniagaan anda dan layak untuk baucar kerajaan bernilai RM1,000.
+    </p>
+
+    <div class="coupon-card" role="complementary" aria-label="Tawaran baucar RM1,000">
+      <div class="coupon-amount">
+        <span class="coupon-rm">RM</span>
+        <span class="coupon-value">1,000</span>
+      </div>
+      <div class="coupon-divider" aria-hidden="true"></div>
+      <div class="coupon-info">
+        <p class="coupon-title">Baucar Digital KDP — Laman Web Perniagaan</p>
+        <p class="coupon-desc">Nilai baucar untuk pembinaan laman web profesional pertama perniagaan anda, dibiayai oleh program kerajaan.</p>
+      </div>
+    </div>
+
+    <p class="hero-meta">
+      <strong>Kurang dari 3 minit</strong> &nbsp;·&nbsp; 7 soalan &nbsp;·&nbsp; Percuma sepenuhnya &nbsp;·&nbsp; Tanpa komitmen
+    </p>
+
+    <div class="hero-ctas">
+      <button class="btn-primary" id="start-btn">
+        Mula Audit Saya →
+      </button>
+      <button class="btn-secondary" id="hero-demo-btn">
+        Cuba Demo
+      </button>
+    </div>
   </div>
 
-  <!-- STEP 1: District -->
-  <section class="step" id="step-1">
-    <div class="q-wrap">
-      <div class="q-num">01</div>
-      <h2 class="q-title">Di mana lokasi perniagaan anda?</h2>
-      <p class="q-hint">Pilih daerah / kawasan anda.</p>
-      <div class="option-grid" id="q1">
-        <div class="option" onclick="selectOption(this,'q1','Kuching')">Kuching</div>
-        <div class="option" onclick="selectOption(this,'q1','Miri')">Miri</div>
-        <div class="option" onclick="selectOption(this,'q1','Sibu')">Sibu</div>
-        <div class="option" onclick="selectOption(this,'q1','Bintulu')">Bintulu</div>
-        <div class="option" onclick="selectOption(this,'q1','Kota Samarahan')">Kota Samarahan</div>
-        <div class="option" onclick="selectOption(this,'q1','Sri Aman')">Sri Aman</div>
-        <div class="option" onclick="selectOption(this,'q1','Sarikei')">Sarikei</div>
-        <div class="option" onclick="selectOption(this,'q1','Mukah')">Mukah</div>
-        <div class="option" onclick="selectOption(this,'q1','Limbang')">Limbang</div>
-        <div class="option" onclick="selectOption(this,'q1','Betong')">Betong</div>
-        <div class="option" onclick="selectOption(this,'q1','Serian')">Serian</div>
-        <div class="option" onclick="selectOption(this,'q1','Kapit')">Kapit</div>
-        <div class="option full" onclick="selectOption(this,'q1','Lain-lain')">Lain-lain</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(0)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(1,'q1')">Seterusnya →</button>
-      </div>
-    </div>
-  </section>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="wave-fill" d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+</section>
 
-  <!-- STEP 2: Business type -->
-  <section class="step" id="step-2">
-    <div class="q-wrap">
-      <div class="q-num">02</div>
-      <h2 class="q-title">Apakah jenis perniagaan anda?</h2>
-      <p class="q-hint">Pilih yang paling hampir dengan perniagaan anda.</p>
-      <div class="option-grid" id="q2">
-        <div class="option" onclick="selectOption(this,'q2','Makanan & Minuman')">🍜 Makanan &amp; Minuman</div>
-        <div class="option" onclick="selectOption(this,'q2','Fesyen & Pakaian')">👗 Fesyen &amp; Pakaian</div>
-        <div class="option" onclick="selectOption(this,'q2','Perkhidmatan')">🔧 Perkhidmatan</div>
-        <div class="option" onclick="selectOption(this,'q2','Pertanian & Produk')">🌾 Pertanian &amp; Produk</div>
-        <div class="option" onclick="selectOption(this,'q2','Kraftangan & Seni')">🎨 Kraftangan &amp; Seni</div>
-        <div class="option" onclick="selectOption(this,'q2','Runcit & Borong')">🏪 Runcit &amp; Borong</div>
-        <div class="option" onclick="selectOption(this,'q2','Kesihatan & Kecantikan')">💄 Kesihatan &amp; Kecantikan</div>
-        <div class="option" onclick="selectOption(this,'q2','Lain-lain')">📦 Lain-lain</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(1)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(2,'q2')">Seterusnya →</button>
-      </div>
-    </div>
-  </section>
+<!-- ── Question form ─────────────────────────────────── -->
+<main id="form-wrap" aria-label="Soalan audit">
 
-  <!-- STEP 3: Web presence -->
-  <section class="step" id="step-3">
-    <div class="q-wrap">
-      <div class="q-num">03</div>
-      <h2 class="q-title">Adakah anda sudah ada kehadiran dalam talian?</h2>
-      <p class="q-hint">Pilih satu yang paling tepat.</p>
-      <div class="option-grid cols-1" id="q3">
-        <div class="option" onclick="selectOption(this,'q3','Tiada langsung')">❌ Tiada langsung &mdash; saya tiada apa-apa dalam talian</div>
-        <div class="option" onclick="selectOption(this,'q3','Facebook sahaja')">📘 Ada Facebook page sahaja</div>
-        <div class="option" onclick="selectOption(this,'q3','Instagram sahaja')">📸 Ada Instagram sahaja</div>
-        <div class="option" onclick="selectOption(this,'q3','Facebook & Instagram')">📱 Ada Facebook &amp; Instagram</div>
-        <div class="option" onclick="selectOption(this,'q3','Sudah ada website')">✅ Sudah ada website sendiri</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(2)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(3,'q3')">Seterusnya →</button>
-      </div>
+  <!-- Q1: Daerah -->
+  <div class="q-step" id="q1" role="group" aria-labelledby="q1-title">
+    <span class="q-chip">Soalan 1 daripada 7</span>
+    <h2 class="q-title" id="q1-title">Di mana perniagaan anda beroperasi?</h2>
+    <p class="q-hint">Pilih daerah atau kawasan utama operasi perniagaan anda.</p>
+    <div class="option-grid" id="q1-grid" data-q="q1">
+      <button class="opt-card" data-value="Kuching"><span class="opt-icon">🏙️</span>Kuching</button>
+      <button class="opt-card" data-value="Miri"><span class="opt-icon">🏭</span>Miri</button>
+      <button class="opt-card" data-value="Sibu"><span class="opt-icon">🏘️</span>Sibu</button>
+      <button class="opt-card" data-value="Bintulu"><span class="opt-icon">🌊</span>Bintulu</button>
+      <button class="opt-card" data-value="Samarahan"><span class="opt-icon">🎓</span>Samarahan</button>
+      <button class="opt-card" data-value="Sri Aman"><span class="opt-icon">🌿</span>Sri Aman</button>
+      <button class="opt-card" data-value="Kapit"><span class="opt-icon">🛶</span>Kapit</button>
+      <button class="opt-card" data-value="Lain-lain"><span class="opt-icon">📍</span>Daerah Lain</button>
     </div>
-  </section>
-
-  <!-- STEP 4: Revenue -->
-  <section class="step" id="step-4">
-    <div class="q-wrap">
-      <div class="q-num">04</div>
-      <h2 class="q-title">Berapa jualan bulanan perniagaan anda?</h2>
-      <p class="q-hint">Anggaran sahaja &mdash; ini membantu kami bagi cadangan yang tepat.</p>
-      <div class="option-grid" id="q4">
-        <div class="option" onclick="selectOption(this,'q4','Bawah RM1,000')">Bawah RM1,000</div>
-        <div class="option" onclick="selectOption(this,'q4','RM1,000–RM5,000')">RM1,000 &ndash; RM5,000</div>
-        <div class="option" onclick="selectOption(this,'q4','RM5,000–RM15,000')">RM5,000 &ndash; RM15,000</div>
-        <div class="option" onclick="selectOption(this,'q4','RM15,000–RM50,000')">RM15,000 &ndash; RM50,000</div>
-        <div class="option full" onclick="selectOption(this,'q4','Lebih RM50,000')">Lebih RM50,000</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(3)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(4,'q4')">Seterusnya →</button>
-      </div>
+    <div class="q-nav">
+      <button class="btn-next" id="q1-next" disabled>Seterusnya →</button>
     </div>
-  </section>
+  </div>
 
-  <!-- STEP 5: Discovery -->
-  <section class="step" id="step-5">
-    <div class="q-wrap">
-      <div class="q-num">05</div>
-      <h2 class="q-title">Bagaimana pelanggan biasanya jumpa perniagaan anda?</h2>
-      <p class="q-hint">Pilih cara utama pelanggan menemui anda.</p>
-      <div class="option-grid cols-1" id="q5">
-        <div class="option" onclick="selectOption(this,'q5','Melalui kenalan / rujukan')">👥 Melalui kenalan / rujukan</div>
-        <div class="option" onclick="selectOption(this,'q5','Facebook atau Instagram')">📱 Facebook atau Instagram</div>
-        <div class="option" onclick="selectOption(this,'q5','Datang terus ke kedai')">🏪 Datang terus ke kedai / pejabat</div>
-        <div class="option" onclick="selectOption(this,'q5','Shopee / Lazada / marketplace')">🛒 Shopee / Lazada / marketplace</div>
-        <div class="option" onclick="selectOption(this,'q5','Carian Google')">🔍 Carian Google</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(4)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(5,'q5')">Seterusnya →</button>
-      </div>
+  <!-- Q2: Jenis perniagaan -->
+  <div class="q-step" id="q2" role="group" aria-labelledby="q2-title">
+    <span class="q-chip">Soalan 2 daripada 7</span>
+    <h2 class="q-title" id="q2-title">Apakah jenis perniagaan anda?</h2>
+    <div class="option-grid" id="q2-grid" data-q="q2">
+      <button class="opt-card" data-value="Makanan &amp; Minuman"><span class="opt-icon">🍜</span>Makanan &amp; Minuman</button>
+      <button class="opt-card" data-value="Peruncitan"><span class="opt-icon">🛍️</span>Peruncitan</button>
+      <button class="opt-card" data-value="Perkhidmatan"><span class="opt-icon">🔧</span>Perkhidmatan</button>
+      <button class="opt-card" data-value="Kraf &amp; Kraftangan"><span class="opt-icon">🎨</span>Kraf &amp; Kraftangan</button>
+      <button class="opt-card" data-value="Pertanian"><span class="opt-icon">🌾</span>Pertanian</button>
+      <button class="opt-card" data-value="Lain-lain"><span class="opt-icon">💼</span>Lain-lain</button>
     </div>
-  </section>
-
-  <!-- STEP 6: Challenge -->
-  <section class="step" id="step-6">
-    <div class="q-wrap">
-      <div class="q-num">06</div>
-      <h2 class="q-title">Apakah cabaran terbesar anda sekarang?</h2>
-      <p class="q-hint">Pilih satu yang paling berkaitan.</p>
-      <div class="option-grid cols-1" id="q6">
-        <div class="option" onclick="selectOption(this,'q6','Susah dapat pelanggan baru')">😔 Susah nak dapat pelanggan baru</div>
-        <div class="option" onclick="selectOption(this,'q6','Pelanggan tak jumpa saya online')">🔍 Pelanggan tak boleh jumpa saya dalam Google atau online</div>
-        <div class="option" onclick="selectOption(this,'q6','Persaingan sengit')">⚔️ Saingan dari perniagaan lain terlalu kuat</div>
-        <div class="option" onclick="selectOption(this,'q6','Tiada masa urus media sosial')">⏰ Tiada masa untuk urus Facebook / Instagram</div>
-        <div class="option" onclick="selectOption(this,'q6','Pelanggan kurang percaya')">🤝 Pelanggan kurang percaya atau tak serius</div>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(5)">← Kembali</button>
-        <button class="btn-primary" onclick="nextStep(6,'q6')">Seterusnya →</button>
-      </div>
+    <div class="q-nav">
+      <button class="btn-back" id="q2-back">← Kembali</button>
+      <button class="btn-next" id="q2-next" disabled>Seterusnya →</button>
     </div>
-  </section>
+  </div>
 
-  <!-- STEP 7: Contact -->
-  <section class="step" id="step-7">
-    <div class="q-wrap">
-      <div class="q-num">07</div>
-      <h2 class="q-title">Siapa anda? Bagi kami hubungi anda.</h2>
-      <p class="q-hint">Kami akan hantar cadangan digital percuma dalam masa 24 jam.</p>
-      <div class="field-stack">
-        <input class="input-field" type="text" id="f-biz" placeholder="Nama perniagaan anda" autocomplete="organization"/>
-        <input class="input-field" type="text" id="f-name" placeholder="Nama anda (pemilik)" autocomplete="name"/>
-        <input class="input-field" type="tel" id="f-mobile" placeholder="No. telefon (contoh: 011-2345 6789)" autocomplete="tel"/>
-        <input class="input-field" type="email" id="f-email" placeholder="Emel (jika ada)" autocomplete="email"/>
-      </div>
-      <div class="q-nav">
-        <button class="btn-ghost" onclick="goStep(6)">← Kembali</button>
-        <button class="btn-primary" id="submit-btn" onclick="submitForm()">Hantar →</button>
-      </div>
+  <!-- Q3: Kehadiran web -->
+  <div class="q-step" id="q3" role="group" aria-labelledby="q3-title">
+    <span class="q-chip">Soalan 3 daripada 7</span>
+    <h2 class="q-title" id="q3-title">Bagaimana pelanggan menemui perniagaan anda sekarang?</h2>
+    <div class="option-grid single-col" id="q3-grid" data-q="q3">
+      <button class="opt-card" data-value="Tiada kehadiran online"><span class="opt-icon">📵</span>Tiada kehadiran online langsung</button>
+      <button class="opt-card" data-value="Facebook sahaja"><span class="opt-icon">📘</span>Facebook atau WhatsApp sahaja</button>
+      <button class="opt-card" data-value="Media sosial aktif"><span class="opt-icon">📱</span>Media sosial aktif (Instagram, TikTok)</button>
+      <button class="opt-card" data-value="Laman web ada tapi lama"><span class="opt-icon">🌐</span>Ada laman web tapi sudah lapuk</button>
+      <button class="opt-card" data-value="Laman web aktif"><span class="opt-icon">✅</span>Ada laman web yang berfungsi dengan baik</button>
     </div>
-  </section>
-
-  <!-- LOADING -->
-  <section class="step" id="step-loading">
-    <div class="loading-wrap">
-      <div class="loader-ring"></div>
-      <p class="loading-title">Sedang menganalisis…</p>
-      <div class="loading-steps">
-        <div class="load-item active" id="li-1">Menilai peluang digital anda</div>
-        <div class="load-item" id="li-2">Memeriksa landskap persaingan</div>
-        <div class="load-item" id="li-3">Menyediakan cadangan untuk anda</div>
-      </div>
+    <div class="q-nav">
+      <button class="btn-back" id="q3-back">← Kembali</button>
+      <button class="btn-next" id="q3-next" disabled>Seterusnya →</button>
     </div>
-  </section>
+  </div>
 
-  <!-- THANK YOU -->
-  <section class="step" id="step-thanks">
-    <div class="thanks-wrap">
-      <div class="thanks-icon">🎉</div>
-      <h2 class="thanks-title">Terima kasih!</h2>
-      <p class="thanks-sub">Maklumat anda telah kami terima. Pasukan kami akan menghubungi anda dalam masa <strong>24 jam</strong> untuk berkongsi cadangan digital percuma.</p>
-      <div class="thanks-card">
-        <p class="thanks-card-label">Sementara itu…</p>
-        <ul class="thanks-list">
-          <li>📱 Follow kami di Facebook untuk tips digital percuma</li>
-          <li>📞 Hubungi terus jika ada sebarang soalan</li>
-          <li>🌐 Lihat contoh website klien kami</li>
-        </ul>
-      </div>
+  <!-- Q4: Pendapatan bulanan -->
+  <div class="q-step" id="q4" role="group" aria-labelledby="q4-title">
+    <span class="q-chip">Soalan 4 daripada 7</span>
+    <h2 class="q-title" id="q4-title">Anggaran pendapatan bulanan perniagaan anda?</h2>
+    <p class="q-hint">Maklumat ini membantu kami memahami peringkat perniagaan anda.</p>
+    <div class="option-grid" id="q4-grid" data-q="q4">
+      <button class="opt-card" data-value="Bawah RM1,000"><span class="opt-icon">🌱</span>Bawah RM1,000</button>
+      <button class="opt-card" data-value="RM1,000–RM5,000"><span class="opt-icon">📈</span>RM1,000 – RM5,000</button>
+      <button class="opt-card" data-value="RM5,000–RM20,000"><span class="opt-icon">💹</span>RM5,000 – RM20,000</button>
+      <button class="opt-card" data-value="Lebih RM20,000"><span class="opt-icon">🏆</span>Lebih RM20,000</button>
     </div>
-  </section>
+    <div class="q-nav">
+      <button class="btn-back" id="q4-back">← Kembali</button>
+      <button class="btn-next" id="q4-next" disabled>Seterusnya →</button>
+    </div>
+  </div>
 
+  <!-- Q5: Cara pelanggan temui -->
+  <div class="q-step" id="q5" role="group" aria-labelledby="q5-title">
+    <span class="q-chip">Soalan 5 daripada 7</span>
+    <h2 class="q-title" id="q5-title">Bagaimana kebanyakan pelanggan baru menemui anda?</h2>
+    <div class="option-grid single-col" id="q5-grid" data-q="q5">
+      <button class="opt-card" data-value="Dari kawan-kawan"><span class="opt-icon">👥</span>Cadangan dari kawan atau keluarga</button>
+      <button class="opt-card" data-value="Facebook atau Instagram"><span class="opt-icon">📲</span>Facebook atau Instagram</button>
+      <button class="opt-card" data-value="Google Search"><span class="opt-icon">🔍</span>Carian Google</button>
+      <button class="opt-card" data-value="Shopee atau Lazada"><span class="opt-icon">🛒</span>Shopee atau Lazada</button>
+      <button class="opt-card" data-value="Jalan dan nampak kedai"><span class="opt-icon">🚶</span>Jalan lalu nampak kedai</button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" id="q5-back">← Kembali</button>
+      <button class="btn-next" id="q5-next" disabled>Seterusnya →</button>
+    </div>
+  </div>
+
+  <!-- Q6: Cabaran utama -->
+  <div class="q-step" id="q6" role="group" aria-labelledby="q6-title">
+    <span class="q-chip">Soalan 6 daripada 7</span>
+    <h2 class="q-title" id="q6-title">Apakah cabaran digital terbesar perniagaan anda?</h2>
+    <div class="option-grid single-col" id="q6-grid" data-q="q6">
+      <button class="opt-card" data-value="Pelanggan tak jumpa saya online"><span class="opt-icon">👻</span>Pelanggan susah jumpa perniagaan saya online</button>
+      <button class="opt-card" data-value="Tiada laman web profesional"><span class="opt-icon">💻</span>Tiada laman web yang kelihatan profesional</button>
+      <button class="opt-card" data-value="Tak tahu mulakan digital"><span class="opt-icon">❓</span>Tidak tahu cara nak mulakan pemasaran digital</button>
+      <button class="opt-card" data-value="Kos terlalu tinggi"><span class="opt-icon">💸</span>Kos laman web dan pemasaran terlalu tinggi</button>
+      <button class="opt-card" data-value="Kurang masa"><span class="opt-icon">⏰</span>Tiada masa untuk uruskan pemasaran digital</button>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" id="q6-back">← Kembali</button>
+      <button class="btn-next" id="q6-next" disabled>Seterusnya →</button>
+    </div>
+  </div>
+
+  <!-- Q7: Maklumat hubungan -->
+  <div class="q-step" id="q7" role="group" aria-labelledby="q7-title">
+    <span class="q-chip">Soalan 7 daripada 7</span>
+    <h2 class="q-title" id="q7-title">Masukkan maklumat untuk terima keputusan anda</h2>
+    <p class="q-hint">Keputusan audit dan kelayakan baucar akan dihantar kepada anda.</p>
+    <div class="contact-form">
+      <div class="field-group">
+        <label for="f-biz">Nama Perniagaan</label>
+        <input id="f-biz" type="text" placeholder="cth. Kedai Makan Mak Jah" autocomplete="organization"/>
+      </div>
+      <div class="field-group">
+        <label for="f-name">Nama Pemilik</label>
+        <input id="f-name" type="text" placeholder="cth. Ahmad bin Kadir" autocomplete="name"/>
+      </div>
+      <div class="field-group">
+        <label for="f-mobile">No. Telefon</label>
+        <input id="f-mobile" type="tel" placeholder="011-2345 6789" autocomplete="tel"/>
+      </div>
+      <div class="field-group">
+        <label for="f-email">Emel (pilihan)</label>
+        <input id="f-email" type="email" placeholder="ahmad@contoh.com" autocomplete="email"/>
+      </div>
+      <p class="form-consent">
+        Dengan menghantar, anda bersetuju maklumat di atas digunakan untuk tujuan program KDP Sarawak. Kami tidak akan berkongsi maklumat anda dengan pihak ketiga.
+      </p>
+    </div>
+    <div class="q-nav">
+      <button class="btn-back" id="q7-back">← Kembali</button>
+      <button class="btn-next" id="q7-submit">Hantar Audit →</button>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Loading ──────────────────────────────────────── -->
+<div id="step-loading" role="status" aria-live="polite" aria-label="Menganalisis keputusan">
+  <div class="loader-ring">
+    <span class="loader-icon" aria-hidden="true">📊</span>
+  </div>
+  <p class="loader-title">Menganalisis profil digital anda…</p>
+  <ul class="loader-items" aria-label="Status analisis">
+    <li class="loader-item" id="li-1">
+      <span class="loader-dot"></span>
+      <span>Menilai kehadiran digital semasa</span>
+    </li>
+    <li class="loader-item" id="li-2">
+      <span class="loader-dot"></span>
+      <span>Mengira skor kelayakan baucar</span>
+    </li>
+    <li class="loader-item" id="li-3">
+      <span class="loader-dot"></span>
+      <span>Menyediakan laporan peribadi</span>
+    </li>
+  </ul>
 </div>
+
+<!-- ── Result ───────────────────────────────────────── -->
+<div id="step-result" role="main" aria-label="Keputusan audit">
+  <div class="result-check" aria-hidden="true">✓</div>
+  <h2 class="result-title">Tahniah! Perniagaan anda layak untuk Baucar Digital KDP.</h2>
+
+  <div class="cert-card" role="region" aria-label="Sijil kelayakan baucar">
+    <div class="cert-inner">
+      <div class="cert-header">
+        <span class="cert-programme">Program KDP Sarawak · Baucar Digital</span>
+        <span class="cert-status-chip">Layak</span>
+      </div>
+
+      <p class="cert-label">Nilai baucar yang diluluskan</p>
+      <div class="cert-amount-row">
+        <span class="cert-rm">RM</span>
+        <span class="cert-amount">1,000</span>
+      </div>
+      <p class="cert-currency-note">Ringgit Malaysia — untuk pembinaan laman web perniagaan pertama</p>
+
+      <div class="cert-divider"></div>
+
+      <div class="cert-details">
+        <div class="cert-row">
+          <span class="cert-row-label">Nama Perniagaan</span>
+          <span class="cert-row-value" id="cert-biz">—</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-row-label">Nama Pemilik</span>
+          <span class="cert-row-value" id="cert-name">—</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-row-label">Kod Rujukan</span>
+          <span class="cert-row-value cert-code" id="cert-code">—</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-row-label">Sah sehingga</span>
+          <span class="cert-row-value" id="cert-validity">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <p class="next-steps-title">Langkah Seterusnya</p>
+    <div class="next-card">
+      <div class="next-card__icon">📞</div>
+      <div class="next-card__text">
+        <p class="next-card__head">Pegawai KDP akan menghubungi anda</p>
+        <p class="next-card__sub">Dalam masa 1-3 hari bekerja melalui WhatsApp atau telefon.</p>
+      </div>
+    </div>
+    <div class="next-card">
+      <div class="next-card__icon">💻</div>
+      <div class="next-card__text">
+        <p class="next-card__head">Pilih pakej laman web anda</p>
+        <p class="next-card__sub">Pakej asas bermula RM500 — baucar RM1,000 menampung kos ini sepenuhnya.</p>
+      </div>
+    </div>
+    <div class="next-card">
+      <div class="next-card__icon">🚀</div>
+      <div class="next-card__text">
+        <p class="next-card__head">Laman web anda hidup dalam 14 hari</p>
+        <p class="next-card__sub">Kami urus semua teknikal — anda fokus pada perniagaan anda.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Demo badge ────────────────────────────────────── -->
+<div class="demo-badge" aria-hidden="true">Demo Mode</div>
+
 <script src="sync.js"></script>
 <script src="app.js"></script>
 </body>

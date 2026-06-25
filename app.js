@@ -1,135 +1,275 @@
+/* ============================================================
+   KDP Cecilia — Audit App
+   ============================================================ */
+
+const TOTAL = 7;
 const answers = {};
 let currentStep = 0;
-const TOTAL = 7;
+let isDemoMode = false;
 
-function goStep(n) {
-  const prev = document.getElementById('step-' + currentStep);
-  const next = document.getElementById('step-' + n);
-  if (!next) return;
-  prev.classList.remove('active');
-  next.style.animation = 'none';
-  next.offsetHeight;
-  next.style.animation = '';
-  next.classList.add('active');
+const DEMO_ANSWERS = {
+  q1: 'Kuching',
+  q2: 'Makanan & Minuman',
+  q3: 'Facebook sahaja',
+  q4: 'RM1,000–RM5,000',
+  q5: 'Facebook atau Instagram',
+  q6: 'Pelanggan tak jumpa saya online',
+};
+
+const DEMO_CONTACT = {
+  biz:    'Kedai Kek Ros Indah',
+  name:   'Rosita binti Ahmad',
+  mobile: '011-2345 6789',
+  email:  'rosita@demo.kdp.my',
+};
+
+/* ── Step navigation ────────────────────────────────────── */
+
+function showHero() {
+  document.getElementById('step-0').style.display = '';
+  document.getElementById('form-wrap').classList.remove('visible');
+  document.getElementById('step-loading').classList.remove('active');
+  document.getElementById('step-result').classList.remove('active');
+  document.getElementById('progress-wrap').classList.remove('visible');
+  currentStep = 0;
+}
+
+function showQuestion(n) {
+  document.getElementById('step-0').style.display = 'none';
+  document.getElementById('step-loading').classList.remove('active');
+  document.getElementById('step-result').classList.remove('active');
+  document.getElementById('form-wrap').classList.add('visible');
+  document.getElementById('progress-wrap').classList.add('visible');
+
+  document.querySelectorAll('.q-step').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('q' + n);
+  if (target) {
+    target.classList.add('active');
+    target.style.animation = 'none';
+    target.offsetHeight;
+    target.style.animation = '';
+  }
   currentStep = n;
   updateProgress(n);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function updateProgress(n) {
-  const shell = document.getElementById('progress-shell');
-  const bar   = document.getElementById('progress-bar');
-  const label = document.getElementById('progress-label');
-  if (typeof n === 'number' && n >= 1 && n <= TOTAL) {
-    shell.classList.add('visible');
-    bar.style.width = ((n - 1) / TOTAL * 100) + '%';
-    label.textContent = n + ' / ' + TOTAL;
-  } else {
-    shell.classList.remove('visible');
+  const pct = Math.round(((n - 1) / TOTAL) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = n + ' / ' + TOTAL;
+  document.getElementById('progress-wrap').setAttribute('aria-valuenow', pct);
+}
+
+/* ── Option selection ───────────────────────────────────── */
+
+function bindOptionGrid(gridId) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  const q = grid.dataset.q;
+  grid.querySelectorAll('.opt-card').forEach(card => {
+    card.addEventListener('click', () => selectOption(q, card, grid));
+  });
+}
+
+function selectOption(q, card, grid) {
+  grid.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  answers[q] = card.dataset.value;
+
+  const nextBtn = document.getElementById(q + '-next') || document.getElementById(q + '-submit');
+  if (nextBtn) nextBtn.disabled = false;
+
+  if (isDemoMode) {
+    setTimeout(() => {
+      const n = parseInt(q.replace('q', ''), 10);
+      if (n < TOTAL) showQuestion(n + 1);
+      else showQuestion(TOTAL);
+    }, 420);
   }
 }
 
-function selectOption(el, key, value) {
-  el.closest('.option-grid').querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  answers[key] = value;
+/* ── Demo mode ──────────────────────────────────────────── */
+
+function enableDemo() {
+  isDemoMode = true;
+  document.body.classList.add('demo-mode');
+  Object.assign(answers, DEMO_ANSWERS);
+  showQuestion(1);
+
+  document.querySelectorAll('[data-q]').forEach(grid => {
+    const q = grid.dataset.q;
+    const val = DEMO_ANSWERS[q];
+    if (!val) return;
+    grid.querySelectorAll('.opt-card').forEach(card => {
+      card.classList.toggle('selected', card.dataset.value === val);
+    });
+    const nextBtn = document.getElementById(q + '-next');
+    if (nextBtn) nextBtn.disabled = false;
+  });
 }
 
-function nextStep(stepNum, fieldId) {
-  clearErrors();
-  if (!answers[fieldId]) {
-    const hint = document.getElementById('step-' + stepNum).querySelector('.q-hint');
-    if (hint) {
-      hint.dataset.orig = hint.dataset.orig || hint.innerHTML;
-      hint.innerHTML = '<span class="error-msg">Sila buat pilihan dahulu.</span>';
-    }
-    return;
-  }
-  goStep(stepNum + 1);
-}
-
-function showError(el, msg) {
-  el.classList.add('input-error');
-  const e = document.createElement('p');
-  e.className = 'error-msg';
-  e.textContent = msg;
-  el.insertAdjacentElement('afterend', e);
-}
-
-function clearErrors() {
-  document.querySelectorAll('.input-error').forEach(e => e.classList.remove('input-error'));
-  document.querySelectorAll('.error-msg').forEach(e => e.remove());
-  document.querySelectorAll('.q-hint[data-orig]').forEach(h => { h.innerHTML = h.dataset.orig; });
-}
-
-async function submitForm() {
-  clearErrors();
-  const biz    = document.getElementById('f-biz').value.trim();
-  const name   = document.getElementById('f-name').value.trim();
-  const mobile = document.getElementById('f-mobile').value.trim();
-  const email  = document.getElementById('f-email').value.trim();
-
-  let hasErr = false;
-  if (!biz)    { showError(document.getElementById('f-biz'),    'Sila masukkan nama perniagaan.'); hasErr = true; }
-  if (!name)   { showError(document.getElementById('f-name'),   'Sila masukkan nama anda.'); hasErr = true; }
-  if (!mobile) { showError(document.getElementById('f-mobile'), 'Sila masukkan nombor telefon.'); hasErr = true; }
-  if (hasErr) return;
-
-  const score = calcScore();
-  const id    = 'C' + Date.now();
-  const record = {
-    id, businessName: biz, ownerName: name, email, mobile,
-    district: answers.q1 || '', bizType: answers.q2 || '',
-    webStatus: answers.q3 || '', revenue: answers.q4 || '',
-    discover: answers.q5 || '', challenge: answers.q6 || '',
-    leadScore: score, status: 'New',
-    createdAt: new Date().toISOString(), source: 'form'
-  };
-
-  const local = JSON.parse(localStorage.getItem('kdp-cecilia-leads') || '[]');
-  local.unshift(record);
-  localStorage.setItem('kdp-cecilia-leads', JSON.stringify(local));
-
-  goStep('loading');
-
-  // Animate loading steps
-  const items = ['li-1', 'li-2', 'li-3'];
-  let i = 0;
-  const tick = () => {
-    if (i > 0) { const p = document.getElementById(items[i-1]); p.classList.remove('active'); p.classList.add('done'); }
-    if (i < items.length) { document.getElementById(items[i]).classList.add('active'); i++; setTimeout(tick, 700 + Math.random()*300); }
-  };
-  tick();
-
-  await new Promise(r => setTimeout(r, 2400));
-  if (window.SDC_SYNC) SDC_SYNC.push(record).catch(() => {});
-  goStep('thanks');
-}
+/* ── Lead scoring ───────────────────────────────────────── */
 
 function calcScore() {
-  let s = 0;
-  // Web presence
-  const ws = answers.q3 || '';
-  if (ws === 'Tiada langsung') s += 30;
-  else if (ws === 'Facebook sahaja' || ws === 'Instagram sahaja') s += 25;
-  else if (ws === 'Facebook & Instagram') s += 20;
-  else s += 5;
-  // Revenue
-  const rev = answers.q4 || '';
-  if (rev.includes('RM5,000')) s += 20;
-  else if (rev.includes('RM15,000') || rev.includes('RM50,000')) s += 25;
-  else if (rev.includes('Lebih')) s += 20;
-  else if (rev.includes('RM1,000')) s += 15;
-  else s += 5;
-  // Challenge
-  const ch = answers.q6 || '';
-  if (ch.includes('Google') || ch.includes('online')) s += 20;
-  else if (ch.includes('pelanggan baru') || ch.includes('percaya')) s += 15;
-  else s += 10;
-  // District bonus
-  if (['Kuching','Miri','Sibu','Bintulu','Kota Samarahan'].includes(answers.q1)) s += 10;
-  else s += 5;
-  // Discovery
-  if (answers.q5 === 'Datang terus ke kedai') s += 5;
-  return Math.min(100, Math.max(1, s));
+  let score = 50;
+  const webMap = {
+    'Tiada kehadiran online': -20,
+    'Facebook sahaja': -5,
+    'Media sosial aktif': 5,
+    'Laman web ada tapi lama': 10,
+    'Laman web aktif': 25,
+  };
+  const revMap = {
+    'Bawah RM1,000': -10,
+    'RM1,000–RM5,000': 0,
+    'RM5,000–RM20,000': 15,
+    'Lebih RM20,000': 20,
+  };
+  const districtBonus = ['Kapit', 'Sri Aman', 'Lain-lain'].includes(answers.q1) ? 10 : 0;
+  score += (webMap[answers.q3] ?? 0);
+  score += (revMap[answers.q4] ?? 0);
+  score += districtBonus;
+  return Math.max(10, Math.min(100, score));
 }
+
+function genCertCode() {
+  const prefix = 'KDP';
+  const year = new Date().getFullYear();
+  const rand = Math.random().toString(36).substring(2, 7).toUpperCase();
+  return prefix + '-' + year + '-' + rand;
+}
+
+/* ── Form submit ────────────────────────────────────────── */
+
+async function submitForm() {
+  let biz, name, mobile, email;
+
+  if (isDemoMode) {
+    biz    = DEMO_CONTACT.biz;
+    name   = DEMO_CONTACT.name;
+    mobile = DEMO_CONTACT.mobile;
+    email  = DEMO_CONTACT.email;
+  } else {
+    biz    = document.getElementById('f-biz').value.trim();
+    name   = document.getElementById('f-name').value.trim();
+    mobile = document.getElementById('f-mobile').value.trim();
+    email  = document.getElementById('f-email').value.trim();
+
+    let hasError = false;
+    [
+      { id: 'f-biz', val: biz },
+      { id: 'f-name', val: name },
+      { id: 'f-mobile', val: mobile },
+    ].forEach(({ id, val }) => {
+      const el = document.getElementById(id);
+      if (!val) { el.classList.add('error'); hasError = true; }
+      else el.classList.remove('error');
+    });
+    if (hasError) return;
+  }
+
+  const score = calcScore();
+  const certCode = genCertCode();
+  const validUntil = new Date();
+  validUntil.setMonth(validUntil.getMonth() + 3);
+  const validStr = validUntil.toLocaleDateString('ms-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  showLoading(isDemoMode);
+
+  if (!isDemoMode) {
+    const record = {
+      id: certCode,
+      biz, name, mobile, email, score, certCode,
+      q1: answers.q1, q2: answers.q2, q3: answers.q3,
+      q4: answers.q4, q5: answers.q5, q6: answers.q6,
+      status: 'Baru',
+      submittedAt: new Date().toISOString(),
+    };
+    try {
+      localStorage.setItem('kdp_last_lead', JSON.stringify(record));
+      await window.SDC_SYNC.push(record);
+    } catch (e) {
+      /* silent fail */
+    }
+  }
+
+  setTimeout(() => {
+    showResult({ biz, name, certCode, validStr });
+  }, isDemoMode ? 1700 : 2600);
+}
+
+/* ── Loading sequence ───────────────────────────────────── */
+
+function showLoading(fast) {
+  document.getElementById('form-wrap').classList.remove('visible');
+  document.getElementById('step-loading').classList.add('active');
+  document.getElementById('progress-wrap').classList.remove('visible');
+
+  const items = ['li-1', 'li-2', 'li-3'];
+  const delays = fast ? [300, 700, 1200] : [400, 1100, 2000];
+
+  items.forEach((id, i) => {
+    const el = document.getElementById(id);
+    el.classList.remove('shown', 'done', 'active');
+    el.querySelector('.loader-dot').className = 'loader-dot';
+    setTimeout(() => {
+      el.classList.add('shown', 'active');
+    }, delays[i]);
+    setTimeout(() => {
+      el.classList.remove('active');
+      el.classList.add('done');
+    }, delays[i] + (fast ? 400 : 800));
+  });
+}
+
+/* ── Show result ────────────────────────────────────────── */
+
+function showResult({ biz, name, certCode, validStr }) {
+  document.getElementById('step-loading').classList.remove('active');
+  document.getElementById('progress-wrap').classList.add('visible');
+  updateProgress(7);
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-label').textContent = 'Selesai';
+
+  document.getElementById('cert-biz').textContent = biz || '—';
+  document.getElementById('cert-name').textContent = name || '—';
+  document.getElementById('cert-code').textContent = certCode;
+  document.getElementById('cert-validity').textContent = validStr;
+
+  document.getElementById('step-result').classList.add('active');
+  document.getElementById('step-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ── Init ───────────────────────────────────────────────── */
+
+function init() {
+  ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'].forEach(q => bindOptionGrid(q + '-grid'));
+
+  document.getElementById('start-btn').addEventListener('click', () => showQuestion(1));
+  document.getElementById('hero-demo-btn').addEventListener('click', enableDemo);
+  document.getElementById('demo-btn').addEventListener('click', enableDemo);
+
+  document.getElementById('q2-back').addEventListener('click', () => showQuestion(1));
+  document.getElementById('q3-back').addEventListener('click', () => showQuestion(2));
+  document.getElementById('q4-back').addEventListener('click', () => showQuestion(3));
+  document.getElementById('q5-back').addEventListener('click', () => showQuestion(4));
+  document.getElementById('q6-back').addEventListener('click', () => showQuestion(5));
+  document.getElementById('q7-back').addEventListener('click', () => showQuestion(6));
+
+  document.getElementById('q1-next').addEventListener('click', () => showQuestion(2));
+  document.getElementById('q2-next').addEventListener('click', () => showQuestion(3));
+  document.getElementById('q3-next').addEventListener('click', () => showQuestion(4));
+  document.getElementById('q4-next').addEventListener('click', () => showQuestion(5));
+  document.getElementById('q5-next').addEventListener('click', () => showQuestion(6));
+  document.getElementById('q6-next').addEventListener('click', () => showQuestion(7));
+  document.getElementById('q7-submit').addEventListener('click', submitForm);
+
+  ['f-biz', 'f-name', 'f-mobile', 'f-email'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => el.classList.remove('error'));
+  });
+
+  if (new URLSearchParams(location.search).get('demo') === '1') enableDemo();
+}
+
+document.addEventListener('DOMContentLoaded', init);
