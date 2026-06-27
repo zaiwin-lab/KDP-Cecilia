@@ -14,9 +14,17 @@
 <div class="beta-bar" role="banner">
   <div class="beta-bar__left">
     <span class="beta-chip">Beta</span>
-    <span class="beta-bar__text">Versi ujian — Untuk semakan kelulusan program KDP Sarawak</span>
+    <span class="beta-bar__text" data-i18n="beta.text">Versi ujian — Untuk semakan kelulusan program KDP Sarawak</span>
   </div>
-  <button class="beta-demo-btn" id="demo-btn" aria-label="Cuba mod demo">Cuba Demo →</button>
+  <div class="beta-bar__right">
+    <div class="lang-toggle" role="group" aria-label="Language / Bahasa">
+      <button class="lang-btn active" data-lang="BM" aria-pressed="true">BM</button>
+      <button class="lang-btn" data-lang="EN" aria-pressed="false">EN</button>
+      <button class="lang-btn" data-lang="ZH" aria-pressed="false">中文</button>
+      <button class="lang-btn" data-lang="IB" aria-pressed="false">Iban</button>
+    </div>
+    <button class="beta-demo-btn" id="demo-btn" data-i18n="beta.demo">Cuba Demo →</button>
+  </div>
 </div>
 
 <!-- ── Progress bar ─────────────────────────────────── -->
@@ -30,19 +38,18 @@
 <!-- ── Hero ─────────────────────────────────────────── -->
 <section id="step-0" aria-label="Halaman utama">
   <div class="hero-inner">
-    <div class="hero-seal" aria-hidden="true">🏛️</div>
 
     <div class="hero-labels">
-      <p class="hero-programme">Kerajaan Negeri Sarawak · Program KDP</p>
-      <p class="hero-subprogramme">Skim Pemerkasaan Digital Usahawan Kecil &amp; Sederhana</p>
+      <p class="hero-programme" data-i18n="hero.programme">Program KDP Sarawak</p>
+      <p class="hero-subprogramme" data-i18n="hero.subprogramme">Skim Pemerkasaan Digital Usahawan Kecil &amp; Sederhana</p>
     </div>
 
     <h1 class="hero-title">
-      Audit Kehadiran Digital<br/>
-      <em>Percuma untuk Perniagaan Sarawak</em>
+      <span data-i18n="hero.title1">Audit Kehadiran Digital</span><br/>
+      <em data-i18n="hero.title2">Percuma untuk Perniagaan Sarawak</em>
     </h1>
 
-    <p class="hero-tagline">
+    <p class="hero-tagline" data-i18n="hero.tagline">
       Jawab 7 soalan ringkas. Ketahui tahap digital perniagaan anda dan layak untuk baucar kerajaan bernilai RM1,000.
     </p>
 
@@ -53,20 +60,20 @@
       </div>
       <div class="coupon-divider" aria-hidden="true"></div>
       <div class="coupon-info">
-        <p class="coupon-title">Baucar Digital KDP — Laman Web Perniagaan</p>
-        <p class="coupon-desc">Nilai baucar untuk pembinaan laman web profesional pertama perniagaan anda, dibiayai oleh program kerajaan.</p>
+        <p class="coupon-title" data-i18n="coupon.title">Baucar Digital KDP — Laman Web Perniagaan</p>
+        <p class="coupon-desc" data-i18n="coupon.desc">Nilai baucar untuk pembinaan laman web profesional pertama perniagaan anda, dibiayai oleh program kerajaan.</p>
       </div>
     </div>
 
-    <p class="hero-meta">
+    <p class="hero-meta" data-i18n-html="hero.meta">
       <strong>Kurang dari 3 minit</strong> &nbsp;·&nbsp; 7 soalan &nbsp;·&nbsp; Percuma sepenuhnya &nbsp;·&nbsp; Tanpa komitmen
     </p>
 
     <div class="hero-ctas">
-      <button class="btn-primary" id="start-btn">
+      <button class="btn-primary" id="start-btn" data-i18n="btn.start">
         Mula Audit Saya →
       </button>
-      <button class="btn-secondary" id="hero-demo-btn">
+      <button class="btn-secondary" id="hero-demo-btn" data-i18n="btn.demo">
         Cuba Demo
       </button>
     </div>
@@ -84,141 +91,141 @@
 
   <!-- Q1: Daerah -->
   <div class="q-step" id="q1" role="group" aria-labelledby="q1-title">
-    <span class="q-chip">Soalan 1 daripada 7</span>
-    <h2 class="q-title" id="q1-title">Di mana perniagaan anda beroperasi?</h2>
-    <p class="q-hint">Pilih daerah atau kawasan utama operasi perniagaan anda.</p>
+    <span class="q-chip" data-i18n="q1.chip">Soalan 1 daripada 7</span>
+    <h2 class="q-title" id="q1-title" data-i18n="q1.title">Di mana perniagaan anda beroperasi?</h2>
+    <p class="q-hint" data-i18n="q1.hint">Pilih daerah atau kawasan utama operasi perniagaan anda.</p>
     <div class="option-grid" id="q1-grid" data-q="q1">
-      <button class="opt-card" data-value="Kuching"><span class="opt-indicator"></span><span class="opt-label">Kuching</span></button>
-      <button class="opt-card" data-value="Miri"><span class="opt-indicator"></span><span class="opt-label">Miri</span></button>
-      <button class="opt-card" data-value="Sibu"><span class="opt-indicator"></span><span class="opt-label">Sibu</span></button>
-      <button class="opt-card" data-value="Bintulu"><span class="opt-indicator"></span><span class="opt-label">Bintulu</span></button>
-      <button class="opt-card" data-value="Samarahan"><span class="opt-indicator"></span><span class="opt-label">Samarahan</span></button>
-      <button class="opt-card" data-value="Sri Aman"><span class="opt-indicator"></span><span class="opt-label">Sri Aman</span></button>
-      <button class="opt-card" data-value="Kapit"><span class="opt-indicator"></span><span class="opt-label">Kapit</span></button>
-      <button class="opt-card" data-value="Lain-lain"><span class="opt-indicator"></span><span class="opt-label">Daerah Lain</span></button>
+      <button class="opt-card" data-value="Kuching"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.kuching">Kuching</span></button>
+      <button class="opt-card" data-value="Miri"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.miri">Miri</span></button>
+      <button class="opt-card" data-value="Sibu"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.sibu">Sibu</span></button>
+      <button class="opt-card" data-value="Bintulu"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.bintulu">Bintulu</span></button>
+      <button class="opt-card" data-value="Samarahan"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.samarahan">Samarahan</span></button>
+      <button class="opt-card" data-value="Sri Aman"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.srIaman">Sri Aman</span></button>
+      <button class="opt-card" data-value="Kapit"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.kapit">Kapit</span></button>
+      <button class="opt-card" data-value="Lain-lain"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q1.other">Daerah Lain</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-next" id="q1-next" disabled>Seterusnya →</button>
+      <button class="btn-next" id="q1-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q2: Jenis perniagaan -->
   <div class="q-step" id="q2" role="group" aria-labelledby="q2-title">
-    <span class="q-chip">Soalan 2 daripada 7</span>
-    <h2 class="q-title" id="q2-title">Apakah jenis perniagaan anda?</h2>
+    <span class="q-chip" data-i18n="q2.chip">Soalan 2 daripada 7</span>
+    <h2 class="q-title" id="q2-title" data-i18n="q2.title">Apakah jenis perniagaan anda?</h2>
     <div class="option-grid" id="q2-grid" data-q="q2">
-      <button class="opt-card" data-value="Makanan &amp; Minuman"><span class="opt-indicator"></span><span class="opt-label">Makanan &amp; Minuman</span></button>
-      <button class="opt-card" data-value="Peruncitan"><span class="opt-indicator"></span><span class="opt-label">Peruncitan</span></button>
-      <button class="opt-card" data-value="Perkhidmatan"><span class="opt-indicator"></span><span class="opt-label">Perkhidmatan</span></button>
-      <button class="opt-card" data-value="Kraf &amp; Kraftangan"><span class="opt-indicator"></span><span class="opt-label">Kraf &amp; Kraftangan</span></button>
-      <button class="opt-card" data-value="Pertanian"><span class="opt-indicator"></span><span class="opt-label">Pertanian</span></button>
-      <button class="opt-card" data-value="Lain-lain"><span class="opt-indicator"></span><span class="opt-label">Lain-lain</span></button>
+      <button class="opt-card" data-value="Makanan &amp; Minuman"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.food">Makanan &amp; Minuman</span></button>
+      <button class="opt-card" data-value="Peruncitan"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.retail">Peruncitan</span></button>
+      <button class="opt-card" data-value="Perkhidmatan"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.services">Perkhidmatan</span></button>
+      <button class="opt-card" data-value="Kraf &amp; Kraftangan"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.craft">Kraf &amp; Kraftangan</span></button>
+      <button class="opt-card" data-value="Pertanian"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.agri">Pertanian</span></button>
+      <button class="opt-card" data-value="Lain-lain"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q2.other">Lain-lain</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q2-back">← Kembali</button>
-      <button class="btn-next" id="q2-next" disabled>Seterusnya →</button>
+      <button class="btn-back" id="q2-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q2-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q3: Kehadiran web -->
   <div class="q-step" id="q3" role="group" aria-labelledby="q3-title">
-    <span class="q-chip">Soalan 3 daripada 7</span>
-    <h2 class="q-title" id="q3-title">Bagaimana pelanggan menemui perniagaan anda sekarang?</h2>
+    <span class="q-chip" data-i18n="q3.chip">Soalan 3 daripada 7</span>
+    <h2 class="q-title" id="q3-title" data-i18n="q3.title">Bagaimana pelanggan menemui perniagaan anda sekarang?</h2>
     <div class="option-grid single-col" id="q3-grid" data-q="q3">
-      <button class="opt-card" data-value="Tiada kehadiran online"><span class="opt-indicator"></span><span class="opt-label">Tiada kehadiran online langsung</span></button>
-      <button class="opt-card" data-value="Facebook sahaja"><span class="opt-indicator"></span><span class="opt-label">Facebook atau WhatsApp sahaja</span></button>
-      <button class="opt-card" data-value="Media sosial aktif"><span class="opt-indicator"></span><span class="opt-label">Media sosial aktif (Instagram, TikTok)</span></button>
-      <button class="opt-card" data-value="Laman web ada tapi lama"><span class="opt-indicator"></span><span class="opt-label">Ada laman web tapi sudah lapuk</span></button>
-      <button class="opt-card" data-value="Laman web aktif"><span class="opt-indicator"></span><span class="opt-label">Ada laman web yang berfungsi dengan baik</span></button>
+      <button class="opt-card" data-value="Tiada kehadiran online"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q3.none">Tiada kehadiran online langsung</span></button>
+      <button class="opt-card" data-value="Facebook sahaja"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q3.fb">Facebook atau WhatsApp sahaja</span></button>
+      <button class="opt-card" data-value="Media sosial aktif"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q3.social">Media sosial aktif (Instagram, TikTok)</span></button>
+      <button class="opt-card" data-value="Laman web ada tapi lama"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q3.oldweb">Ada laman web tapi sudah lapuk</span></button>
+      <button class="opt-card" data-value="Laman web aktif"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q3.activeweb">Ada laman web yang berfungsi dengan baik</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q3-back">← Kembali</button>
-      <button class="btn-next" id="q3-next" disabled>Seterusnya →</button>
+      <button class="btn-back" id="q3-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q3-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q4: Pendapatan bulanan -->
   <div class="q-step" id="q4" role="group" aria-labelledby="q4-title">
-    <span class="q-chip">Soalan 4 daripada 7</span>
-    <h2 class="q-title" id="q4-title">Anggaran pendapatan bulanan perniagaan anda?</h2>
-    <p class="q-hint">Maklumat ini membantu kami memahami peringkat perniagaan anda.</p>
+    <span class="q-chip" data-i18n="q4.chip">Soalan 4 daripada 7</span>
+    <h2 class="q-title" id="q4-title" data-i18n="q4.title">Anggaran pendapatan bulanan perniagaan anda?</h2>
+    <p class="q-hint" data-i18n="q4.hint">Maklumat ini membantu kami memahami peringkat perniagaan anda.</p>
     <div class="option-grid" id="q4-grid" data-q="q4">
-      <button class="opt-card" data-value="Bawah RM1,000"><span class="opt-indicator"></span><span class="opt-label">Bawah RM1,000</span></button>
-      <button class="opt-card" data-value="RM1,000–RM5,000"><span class="opt-indicator"></span><span class="opt-label">RM1,000 – RM5,000</span></button>
-      <button class="opt-card" data-value="RM5,000–RM20,000"><span class="opt-indicator"></span><span class="opt-label">RM5,000 – RM20,000</span></button>
-      <button class="opt-card" data-value="Lebih RM20,000"><span class="opt-indicator"></span><span class="opt-label">Lebih RM20,000</span></button>
+      <button class="opt-card" data-value="Bawah RM1,000"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q4.under1k">Bawah RM1,000</span></button>
+      <button class="opt-card" data-value="RM1,000–RM5,000"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q4.1kto5k">RM1,000 – RM5,000</span></button>
+      <button class="opt-card" data-value="RM5,000–RM20,000"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q4.5kto20k">RM5,000 – RM20,000</span></button>
+      <button class="opt-card" data-value="Lebih RM20,000"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q4.over20k">Lebih RM20,000</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q4-back">← Kembali</button>
-      <button class="btn-next" id="q4-next" disabled>Seterusnya →</button>
+      <button class="btn-back" id="q4-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q4-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q5: Cara pelanggan temui -->
   <div class="q-step" id="q5" role="group" aria-labelledby="q5-title">
-    <span class="q-chip">Soalan 5 daripada 7</span>
-    <h2 class="q-title" id="q5-title">Bagaimana kebanyakan pelanggan baru menemui anda?</h2>
-    <p class="q-multi-hint"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>Boleh pilih lebih dari satu</p>
+    <span class="q-chip" data-i18n="q5.chip">Soalan 5 daripada 7</span>
+    <h2 class="q-title" id="q5-title" data-i18n="q5.title">Bagaimana kebanyakan pelanggan baru menemui anda?</h2>
+    <p class="q-multi-hint"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg><span data-i18n="multi.hint">Boleh pilih lebih dari satu</span></p>
     <div class="option-grid single-col" id="q5-grid" data-q="q5" data-multi="true">
-      <button class="opt-card" data-value="Dari kawan-kawan"><span class="opt-indicator"></span><span class="opt-label">Cadangan dari kawan atau keluarga</span></button>
-      <button class="opt-card" data-value="Facebook atau Instagram"><span class="opt-indicator"></span><span class="opt-label">Facebook atau Instagram</span></button>
-      <button class="opt-card" data-value="Google Search"><span class="opt-indicator"></span><span class="opt-label">Carian Google</span></button>
-      <button class="opt-card" data-value="Shopee atau Lazada"><span class="opt-indicator"></span><span class="opt-label">Shopee atau Lazada</span></button>
-      <button class="opt-card" data-value="Jalan dan nampak kedai"><span class="opt-indicator"></span><span class="opt-label">Jalan lalu nampak kedai</span></button>
+      <button class="opt-card" data-value="Dari kawan-kawan"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q5.wom">Cadangan dari kawan atau keluarga</span></button>
+      <button class="opt-card" data-value="Facebook atau Instagram"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q5.social">Facebook atau Instagram</span></button>
+      <button class="opt-card" data-value="Google Search"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q5.google">Carian Google</span></button>
+      <button class="opt-card" data-value="Shopee atau Lazada"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q5.ecom">Shopee atau Lazada</span></button>
+      <button class="opt-card" data-value="Jalan dan nampak kedai"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q5.walk">Jalan lalu nampak kedai</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q5-back">← Kembali</button>
-      <button class="btn-next" id="q5-next" disabled>Seterusnya →</button>
+      <button class="btn-back" id="q5-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q5-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q6: Cabaran utama -->
   <div class="q-step" id="q6" role="group" aria-labelledby="q6-title">
-    <span class="q-chip">Soalan 6 daripada 7</span>
-    <h2 class="q-title" id="q6-title">Apakah cabaran digital terbesar perniagaan anda?</h2>
-    <p class="q-multi-hint"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>Boleh pilih lebih dari satu</p>
+    <span class="q-chip" data-i18n="q6.chip">Soalan 6 daripada 7</span>
+    <h2 class="q-title" id="q6-title" data-i18n="q6.title">Apakah cabaran digital terbesar perniagaan anda?</h2>
+    <p class="q-multi-hint"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/></svg><span data-i18n="multi.hint">Boleh pilih lebih dari satu</span></p>
     <div class="option-grid single-col" id="q6-grid" data-q="q6" data-multi="true">
-      <button class="opt-card" data-value="Pelanggan tak jumpa saya online"><span class="opt-indicator"></span><span class="opt-label">Pelanggan susah jumpa perniagaan saya online</span></button>
-      <button class="opt-card" data-value="Tiada laman web profesional"><span class="opt-indicator"></span><span class="opt-label">Tiada laman web yang kelihatan profesional</span></button>
-      <button class="opt-card" data-value="Tak tahu mulakan digital"><span class="opt-indicator"></span><span class="opt-label">Tidak tahu cara nak mulakan pemasaran digital</span></button>
-      <button class="opt-card" data-value="Kos terlalu tinggi"><span class="opt-indicator"></span><span class="opt-label">Kos laman web dan pemasaran terlalu tinggi</span></button>
-      <button class="opt-card" data-value="Kurang masa"><span class="opt-indicator"></span><span class="opt-label">Tiada masa untuk uruskan pemasaran digital</span></button>
+      <button class="opt-card" data-value="Pelanggan tak jumpa saya online"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q6.nofind">Pelanggan susah jumpa perniagaan saya online</span></button>
+      <button class="opt-card" data-value="Tiada laman web profesional"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q6.noweb">Tiada laman web yang kelihatan profesional</span></button>
+      <button class="opt-card" data-value="Tak tahu mulakan digital"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q6.noknow">Tidak tahu cara nak mulakan pemasaran digital</span></button>
+      <button class="opt-card" data-value="Kos terlalu tinggi"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q6.cost">Kos laman web dan pemasaran terlalu tinggi</span></button>
+      <button class="opt-card" data-value="Kurang masa"><span class="opt-indicator"></span><span class="opt-label" data-i18n="q6.time">Tiada masa untuk uruskan pemasaran digital</span></button>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q6-back">← Kembali</button>
-      <button class="btn-next" id="q6-next" disabled>Seterusnya →</button>
+      <button class="btn-back" id="q6-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q6-next" disabled data-i18n="nav.next">Seterusnya →</button>
     </div>
   </div>
 
   <!-- Q7: Maklumat hubungan -->
   <div class="q-step" id="q7" role="group" aria-labelledby="q7-title">
-    <span class="q-chip">Soalan 7 daripada 7</span>
-    <h2 class="q-title" id="q7-title">Masukkan maklumat untuk terima keputusan anda</h2>
-    <p class="q-hint">Keputusan audit dan kelayakan baucar akan dihantar kepada anda.</p>
+    <span class="q-chip" data-i18n="q7.chip">Soalan 7 daripada 7</span>
+    <h2 class="q-title" id="q7-title" data-i18n="q7.title">Masukkan maklumat untuk terima keputusan anda</h2>
+    <p class="q-hint" data-i18n="q7.hint">Keputusan audit dan kelayakan baucar akan dihantar kepada anda.</p>
     <div class="contact-form">
       <div class="field-group">
-        <label for="f-biz">Nama Perniagaan</label>
-        <input id="f-biz" type="text" placeholder="cth. Kedai Makan Mak Jah" autocomplete="organization"/>
+        <label for="f-biz" data-i18n="form.biz">Nama Perniagaan</label>
+        <input id="f-biz" type="text" placeholder="cth. Kedai Makan Mak Jah" data-i18n-placeholder="form.biz.ph" autocomplete="organization"/>
       </div>
       <div class="field-group">
-        <label for="f-name">Nama Pemilik</label>
-        <input id="f-name" type="text" placeholder="cth. Ahmad bin Kadir" autocomplete="name"/>
+        <label for="f-name" data-i18n="form.name">Nama Pemilik</label>
+        <input id="f-name" type="text" placeholder="cth. Ahmad bin Kadir" data-i18n-placeholder="form.name.ph" autocomplete="name"/>
       </div>
       <div class="field-group">
-        <label for="f-mobile">No. Telefon</label>
-        <input id="f-mobile" type="tel" placeholder="011-2345 6789" autocomplete="tel"/>
+        <label for="f-mobile" data-i18n="form.mobile">No. Telefon</label>
+        <input id="f-mobile" type="tel" placeholder="011-2345 6789" data-i18n-placeholder="form.mobile.ph" autocomplete="tel"/>
       </div>
       <div class="field-group">
-        <label for="f-email">Emel (pilihan)</label>
-        <input id="f-email" type="email" placeholder="ahmad@contoh.com" autocomplete="email"/>
+        <label for="f-email" data-i18n="form.email">Emel (pilihan)</label>
+        <input id="f-email" type="email" placeholder="ahmad@contoh.com" data-i18n-placeholder="form.email.ph" autocomplete="email"/>
       </div>
-      <p class="form-consent">
+      <p class="form-consent" data-i18n="form.consent">
         Dengan menghantar, anda bersetuju maklumat di atas digunakan untuk tujuan program KDP Sarawak. Kami tidak akan berkongsi maklumat anda dengan pihak ketiga.
       </p>
     </div>
     <div class="q-nav">
-      <button class="btn-back" id="q7-back">← Kembali</button>
-      <button class="btn-next" id="q7-submit">Hantar Audit →</button>
+      <button class="btn-back" id="q7-back" data-i18n="nav.back">← Kembali</button>
+      <button class="btn-next" id="q7-submit" data-i18n="nav.submit">Hantar Audit →</button>
     </div>
   </div>
 
@@ -229,19 +236,19 @@
   <div class="loader-ring">
     <span class="loader-icon" aria-hidden="true">📊</span>
   </div>
-  <p class="loader-title">Menganalisis profil digital anda…</p>
+  <p class="loader-title" data-i18n="loading.title">Menganalisis profil digital anda…</p>
   <ul class="loader-items" aria-label="Status analisis">
     <li class="loader-item" id="li-1">
       <span class="loader-dot"></span>
-      <span>Menilai kehadiran digital semasa</span>
+      <span data-i18n="loading.li1">Menilai kehadiran digital semasa</span>
     </li>
     <li class="loader-item" id="li-2">
       <span class="loader-dot"></span>
-      <span>Mengira skor kelayakan baucar</span>
+      <span data-i18n="loading.li2">Mengira skor kelayakan baucar</span>
     </li>
     <li class="loader-item" id="li-3">
       <span class="loader-dot"></span>
-      <span>Menyediakan laporan peribadi</span>
+      <span data-i18n="loading.li3">Menyediakan laporan peribadi</span>
     </li>
   </ul>
 </div>
@@ -249,39 +256,39 @@
 <!-- ── Result ───────────────────────────────────────── -->
 <div id="step-result" role="main" aria-label="Keputusan audit">
   <div class="result-check" aria-hidden="true">✓</div>
-  <h2 class="result-title">Tahniah! Perniagaan anda layak untuk Baucar Digital KDP.</h2>
+  <h2 class="result-title" data-i18n="result.title">Tahniah! Perniagaan anda layak untuk Baucar Digital KDP.</h2>
 
   <div class="cert-card" role="region" aria-label="Sijil kelayakan baucar">
     <div class="cert-inner">
       <div class="cert-header">
-        <span class="cert-programme">Program KDP Sarawak · Baucar Digital</span>
-        <span class="cert-status-chip">Layak</span>
+        <span class="cert-programme" data-i18n="cert.programme">Program KDP Sarawak · Baucar Digital</span>
+        <span class="cert-status-chip" data-i18n="cert.status">Layak</span>
       </div>
 
-      <p class="cert-label">Nilai baucar yang diluluskan</p>
+      <p class="cert-label" data-i18n="cert.label">Nilai baucar yang diluluskan</p>
       <div class="cert-amount-row">
         <span class="cert-rm">RM</span>
         <span class="cert-amount">1,000</span>
       </div>
-      <p class="cert-currency-note">Ringgit Malaysia — untuk pembinaan laman web perniagaan pertama</p>
+      <p class="cert-currency-note" data-i18n="cert.currNote">Ringgit Malaysia — untuk pembinaan laman web perniagaan pertama</p>
 
       <div class="cert-divider"></div>
 
       <div class="cert-details">
         <div class="cert-row">
-          <span class="cert-row-label">Nama Perniagaan</span>
+          <span class="cert-row-label" data-i18n="cert.row.biz">Nama Perniagaan</span>
           <span class="cert-row-value" id="cert-biz">—</span>
         </div>
         <div class="cert-row">
-          <span class="cert-row-label">Nama Pemilik</span>
+          <span class="cert-row-label" data-i18n="cert.row.name">Nama Pemilik</span>
           <span class="cert-row-value" id="cert-name">—</span>
         </div>
         <div class="cert-row">
-          <span class="cert-row-label">Kod Rujukan</span>
+          <span class="cert-row-label" data-i18n="cert.row.code">Kod Rujukan</span>
           <span class="cert-row-value cert-code" id="cert-code">—</span>
         </div>
         <div class="cert-row">
-          <span class="cert-row-label">Sah sehingga</span>
+          <span class="cert-row-label" data-i18n="cert.row.valid">Sah sehingga</span>
           <span class="cert-row-value" id="cert-validity">—</span>
         </div>
       </div>
@@ -289,26 +296,26 @@
   </div>
 
   <div class="next-steps">
-    <p class="next-steps-title">Langkah Seterusnya</p>
+    <p class="next-steps-title" data-i18n="next.title">Langkah Seterusnya</p>
     <div class="next-card">
       <div class="next-card__icon">📞</div>
       <div class="next-card__text">
-        <p class="next-card__head">Pegawai KDP akan menghubungi anda</p>
-        <p class="next-card__sub">Dalam masa 1-3 hari bekerja melalui WhatsApp atau telefon.</p>
+        <p class="next-card__head" data-i18n="next.step1.head">Pegawai KDP akan menghubungi anda</p>
+        <p class="next-card__sub" data-i18n="next.step1.sub">Dalam masa 1-3 hari bekerja melalui WhatsApp atau telefon.</p>
       </div>
     </div>
     <div class="next-card">
       <div class="next-card__icon">💻</div>
       <div class="next-card__text">
-        <p class="next-card__head">Pilih pakej laman web anda</p>
-        <p class="next-card__sub">Pakej asas bermula RM500 — baucar RM1,000 menampung kos ini sepenuhnya.</p>
+        <p class="next-card__head" data-i18n="next.step2.head">Pilih pakej laman web anda</p>
+        <p class="next-card__sub" data-i18n="next.step2.sub">Pakej asas bermula RM500 — baucar RM1,000 menampung kos ini sepenuhnya.</p>
       </div>
     </div>
     <div class="next-card">
       <div class="next-card__icon">🚀</div>
       <div class="next-card__text">
-        <p class="next-card__head">Laman web anda hidup dalam 14 hari</p>
-        <p class="next-card__sub">Kami urus semua teknikal — anda fokus pada perniagaan anda.</p>
+        <p class="next-card__head" data-i18n="next.step3.head">Laman web anda hidup dalam 14 hari</p>
+        <p class="next-card__sub" data-i18n="next.step3.sub">Kami urus semua teknikal — anda fokus pada perniagaan anda.</p>
       </div>
     </div>
   </div>
