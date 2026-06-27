@@ -12,8 +12,8 @@ const DEMO_ANSWERS = {
   q2: 'Makanan & Minuman',
   q3: 'Facebook sahaja',
   q4: 'RM1,000–RM5,000',
-  q5: 'Facebook atau Instagram',
-  q6: 'Pelanggan tak jumpa saya online',
+  q5: ['Facebook atau Instagram', 'Dari kawan-kawan'],
+  q6: ['Pelanggan tak jumpa saya online', 'Tiada laman web profesional'],
 };
 
 const DEMO_CONTACT = {
@@ -72,14 +72,20 @@ function bindOptionGrid(gridId) {
 }
 
 function selectOption(q, card, grid) {
-  grid.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
-  card.classList.add('selected');
-  answers[q] = card.dataset.value;
+  const isMulti = grid.dataset.multi === 'true';
+  if (isMulti) {
+    card.classList.toggle('selected');
+  } else {
+    grid.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+  const selected = [...grid.querySelectorAll('.opt-card.selected')].map(c => c.dataset.value);
+  answers[q] = isMulti ? selected : selected[0];
 
   const nextBtn = document.getElementById(q + '-next') || document.getElementById(q + '-submit');
-  if (nextBtn) nextBtn.disabled = false;
+  if (nextBtn) nextBtn.disabled = selected.length === 0;
 
-  if (isDemoMode) {
+  if (isDemoMode && !isMulti) {
     setTimeout(() => {
       const n = parseInt(q.replace('q', ''), 10);
       if (n < TOTAL) showQuestion(n + 1);
@@ -100,8 +106,9 @@ function enableDemo() {
     const q = grid.dataset.q;
     const val = DEMO_ANSWERS[q];
     if (!val) return;
+    const vals = Array.isArray(val) ? val : [val];
     grid.querySelectorAll('.opt-card').forEach(card => {
-      card.classList.toggle('selected', card.dataset.value === val);
+      card.classList.toggle('selected', vals.includes(card.dataset.value));
     });
     const nextBtn = document.getElementById(q + '-next');
     if (nextBtn) nextBtn.disabled = false;
@@ -181,7 +188,9 @@ async function submitForm() {
       id: certCode,
       biz, name, mobile, email, score, certCode,
       q1: answers.q1, q2: answers.q2, q3: answers.q3,
-      q4: answers.q4, q5: answers.q5, q6: answers.q6,
+      q4: answers.q4,
+      q5: Array.isArray(answers.q5) ? answers.q5.join(', ') : answers.q5,
+      q6: Array.isArray(answers.q6) ? answers.q6.join(', ') : answers.q6,
       status: 'Baru',
       submittedAt: new Date().toISOString(),
     };
